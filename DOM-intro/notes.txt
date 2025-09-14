@@ -38,10 +38,10 @@ Use case: Jab ek class ke elements chahiye.
 
 Note: Direct forEach() nahi chalega → Array.from() use karo.
 
-const temp2 = document.getElementsByClassName("change");
-const temp3 = Array.from(temp2);
+const temp = document.getElementsByClassName("change");
+const temp2 = Array.from(temp);
 
-temp3.forEach(el => {
+temp2.forEach(el => {
   el.style.backgroundColor = "orange";
 });
 

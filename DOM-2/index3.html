@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-3</title>
+
+</head>
+<body style="background-color: black; color: rgb(250, 250, 250);">
+    <ul class="language">
+       
+            <li>Javascript</li>
+            
+    
+    </ul>
+</body>
+<script>
+
+
+    // General approach
+
+    // function addlang (lang) {
+    //   const  li =  document.createElement('li')
+    //   li.innerHTML = `${lang}`
+    //   document.querySelector('.language').appendChild(li)
+
+    // }
+    // addlang("python")
+    // addlang("cpp")
+     
+
+    // optimized way
+
+    const func = (lang) =>{
+     const li = document.createElement('li');
+     li.appendChild(document.createTextNode(lang))
+     document.querySelector('.language').appendChild(li)
+    }
+
+    func("Python")
+    func("Java")
+
+    // Edit
+
+    // general 
+
+    //    document.querySelector("li:nth-child(2)").innerHTML ="Java"
+
+    // optimised 
+    
+    const select = document.querySelector("li:nth-child(2)")
+
+   const newli = document.createElement('li')
+   newli.textContent = "C++"
+   
+   select.replaceWith(newli)
+
+  // another eg of edit
+   
+  const replace_first  = document.querySelector('li:nthchild(1)')
+  replace_first.outerHTML = '<li>TypeScript<li/>'
+
+    //remove
+    const last = document.querySelector('li:last-child')
+    last.remove()
+
+
+
+</script>
+</html>
