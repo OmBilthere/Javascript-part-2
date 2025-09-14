@@ -1,0 +1,68 @@
+🌐 DOM Selection Notes (with Examples)
+1. document.querySelector()
+
+Return: First matching element.
+
+Input: CSS selector (class, id, tag, etc.).
+
+Use case: Jab tumhe sirf ek element chahiye.
+
+const el = document.querySelector(".change"); 
+el.style.color = "red";   // sirf pehle waale .change class wale element ka color badlega
+
+2. document.querySelectorAll()
+
+Return: NodeList (array-like).
+
+Use case: Jab ek se jyada elements chahiye (aur .forEach() direct chalana ho).
+
+const allEls = document.querySelectorAll(".change");
+allEls.forEach(el => {
+  el.style.backgroundColor = "blue";  // sabhi .change wale elements ka bg blue hoga
+});
+
+3. document.getElementById()
+
+Return: Ek single element (ya null).
+
+Use case: Jab tumhe sirf ek unique element chahiye (id always unique hoti hai).
+
+const box = document.getElementById("myBox");
+box.innerText = "Hello DOM!";
+
+4. document.getElementsByClassName()
+
+Return: HTMLCollection (live collection).
+
+Use case: Jab ek class ke elements chahiye.
+
+Note: Direct forEach() nahi chalega → Array.from() use karo.
+
+const temp2 = document.getElementsByClassName("change");
+const temp3 = Array.from(temp2);
+
+temp3.forEach(el => {
+  el.style.backgroundColor = "orange";
+});
+
+5. document.getElementsByTagName()
+
+Return: HTMLCollection (all matching tags).
+
+Use case: Jab kisi specific tag ke saare elements chahiye.
+
+const allDivs = document.getElementsByTagName("div");
+Array.from(allDivs).map(el => {
+  el.style.border = "1px solid black";
+  return el;
+});
+
+⚡ Difference Quick Recap
+
+querySelector → pehla matching element.
+
+querySelectorAll → NodeList (static, supports forEach).
+
+getElementById → ek unique element by id.
+
+getElementsByClassName / getElementsByTagName → HTMLCollection (live, convert karke loop chalao).
