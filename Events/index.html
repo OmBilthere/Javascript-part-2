@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+
+
+
+//  document.getElementById('owl').onclick = function() {
+//   alert('You clicked on Owl')
+//  this is also good but onclick gives less features than event
+ // }
+
+// document.getElementById('owl').addEventListener('click', ()=>{
+//     alert('Clicked on Owl')
+// })
+
+
+
+
+// attachEvent() - phle use hota tha ye 
+// jQuery - ye bhi phle use hota tha 
+
+
+
+
+
+// type , timestamp , defaultPrevented , target , toElement , srcElement , currentTarget , clientX , clientY , screenX , screenY
+// altkey , ctrlkey , shiftkey , keycode
+// upar walo ko self study kro
+
+
+// EventPropogation  or  Bubbling 
+
+// document.getElementById('images').addEventListener('click', (e)=>{
+//    console.log('clicked inside ul')
+// }, false)
+
+// eventlistener m ye third field bool wali bhi hoti h lekin kyoki ye by default false h to likhte nhi h
+
+
+// document.getElementById('owl').addEventListener('click', (e)=>{
+//    console.log('clicked owl')
+// }, false)
+
+// is eg m image ke andar hi owl h to owl ko click krne se 
+// dono par click hoga esi condition m
+
+// agar third parameter false h to andar se bahar event listen honge 
+// mtlb phle clicked owl listen hoga phir ul
+
+// agar third parameter true h to bahar se andar listening hogi upar wale ka just
+// ulta
+
+
+// lekin hum kabhi kabhi ye chahte h ki dono event seperate rhe
+// to iske liye method h
+// e.stopPropagation() - ab event propate nhi honga
+
+
+// Changing the default behaviour -
+// document.getElementById('google').addEventListener('click', (e)=>{
+//     e.preventDefault() // ye google pe nhi krega refer
+//     e.stopPropagation() // ye propogation rok degaa
+
+//     console.log('Google clicked')
+// } , false)
+
+//  removing all photos 
+      document.querySelector('#images').addEventListener("click", function(e){
+       console.log(e.target) // isme wo image aaygi jispe click krenge lekin 
+       // hum to li chahiye to hum uske parent ko target krenge
+      
+    // let removeIt = e.target.parentNode
+
+    // 2 tarike h iske
+    //    removeIt.remove()
+    //  or
+    //  removeIt.parentNode.removeChild(removeIt)
+
+    // yaha glti se kisi li pe click ho gya to poora ul nipat jayga
+    // esi condition m hum ek check lgate h 
+    if(e.target.tagName === 'IMG') {
+        let removeIt = e.target.parentNode
+        removeIt.remove()
+    }
+
+ } )
+
+</script>
+</html>
