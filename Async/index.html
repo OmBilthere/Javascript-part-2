@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur code </h1>
+    <button id="stop"> Stop </button>
+</body>
+<script>
+
+// setTimeout runs one time
+// setTimeout(function(){
+//     console.log("Om")
+// } ,2000);
+// yaha function ka ref bhi de skte h jaise neeche kiya h
+const sayOm = ()=>{
+    console.log("Om")
+}
+
+setTimeout(sayOm ,2000)
+
+const changeText = ()=>{
+    document.querySelector('h1').innerHTML = "Best Js series"
+}
+
+// stopping changeText from exectuing
+
+ const hold = setTimeout(changeText,2000)
+
+document.querySelector('#stop').addEventListener('click', function(){
+    clearTimeout(hold)
+    console.log("Stopped ")
+} )
+
+
+
+</script>
+</html>
