@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .Profile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+    }
+
+    .followers {
+        background-color: white;
+        padding: 5px;
+
+    }
+</style>
+
+<body style="background-color: #212121;">
+    <div class="Profile">
+        <div style="width: 100;" class="image">
+
+        </div>
+        <span class="followers"></span>
+    </div>
+
+</body>
+
+<script>
+    // old style of fatching data 
+    const req = 'https://api.github.com/users/HiteshChoudhary'
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', req)
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText)
+
+            document.querySelector('.image').innerHTML = `<img src= "${data.avatar_url}"  width="200"  alt="">`
+            document.querySelector('.followers').textContent = ` Followers : ${data.followers}`
+        }
+    }
+    xhr.send()
+
+
+</script>
+
+</html>
