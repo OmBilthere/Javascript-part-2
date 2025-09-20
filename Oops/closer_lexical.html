@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="orange">Orange</button>
+     <button id="green">Green</button>
+
+</body>
+<script>
+ 
+    // eg of lexical scoping
+
+    // function outer () {
+    //     let username = "hitesh"
+    //      function inner () {
+    //         console.log("inner", username) // ye hitesh de dega
+    //      }
+    //      inner ()
+    // }
+    // outer()
+    // console.log("outer" , username ) // ye not defined dega
+
+    // eg of Closure
+
+
+    // function makeFunc () {
+    //     const name = "om" 
+    //     function displayName () {
+    //         console.log(name)
+
+    //     }
+    //     return displayName // refrence bhej rhe h 
+    // }
+    //  const myFunc = makeFunc()  // ab yaha  displayName function ka execution context akela nhi jata wo saath m 
+    //  // outer wale required variable method ko bhi le jata h taaki wo execute ho ske
+
+    //  myFunc()
+
+
+    // pratical eg of closure and lexical scope
+
+
+    //  document.getElementbyId("orange").onClick = function() {
+    //     document.body.style.backgroundColor = `orange`
+    //  }
+    //  document.getElementbyId("green").onClick = function() {
+    //     document.body.style.backgroundColor = `green`
+    //  }
+
+     // ab ese hi bhut jyada function ho to har baar likhna tough hoga
+
+     function clickHandler(color) {
+
+                return function () {
+
+                    document.body.style.backgroundColor = `${color}`
+                }
+            }
+
+            // agar function ke andar return function nhi krenge to clickHandler direct call ho jyga aur turant execute ho jayga 
+            // isiliye andar wala function banana padega aur bahar wala color andar bhi available hoga abhi upar hi
+            // discuss kiya h
+
+
+    document.getElementById('orange').onclick = clickHandler("orange")
+    document.getElementById('green').onclick = clickHandler("green")
+
+
+    
+
+    
+
+
+
+
+</script>
+</html>
